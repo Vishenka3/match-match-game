@@ -1,0 +1,210 @@
+.game-field{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 75%;
+  transition: opacity .5s;
+}
+
+.main-hidden{
+  opacity: 0;
+  display: none;
+}
+
+.deck {
+  width: 50%;
+  background: #716F71;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 0 3em;
+  .card {
+    height: 8rem;
+    width: 7rem;
+    margin: 0.2rem 0.2rem;
+    //background: #141214;
+    background-size: contain;
+    transition: opacity 1.5s;
+    font-size: 1rem;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:before{
+      bottom: auto;
+    }
+    &:after{
+      bottom: auto;
+    }
+  }
+  .open {
+    transform: rotateY(0);
+    background-image: url("../assets/shirts/second.png");
+    cursor: default;
+    //animation-name: flipInY;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+  }
+  .flip-back{
+    transform: rotateY(0);
+    animation-name: flipBack;
+    animation-duration: .45s;
+  }
+  .show {
+    //font-size: 33px;
+    animation-name: flipInY;
+    animation-duration: .75s;
+  }
+  .match {
+    cursor: default;
+    //background: #E5F720;
+    background-image: url("../assets/shirts/second.png");
+    //font-size: 24px;
+    animation-name: rubberBand;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+  }
+  .unmatched {
+    //animation-name: flipInY;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+    background: #e2043b;
+    background-size: contain;
+  }
+  .disabled {
+    pointer-events: none;
+  }
+  .disapear{
+    opacity: 0;
+  }
+}
+
+.first{
+  background-image: url("../assets/shirts/first.jpg");
+}
+.second{
+  background-image: url("../assets/shirts/second.png");
+}
+.third{
+  background-image: url("../assets/shirts/third.jpg");
+}
+
+.score-panel {
+  text-align: left;
+  margin-bottom: 10px;
+  .restart {
+    float: right;
+    cursor: pointer;
+  }
+}
+
+.timer {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes flipBack {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    opacity: .5;
+  }
+
+  to {
+    opacity: 0;
+    transform: perspective(400px);
+  }
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}

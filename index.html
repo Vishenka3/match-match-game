@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Match Match Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icon2.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/eightbit_button.css">
+    <link rel="stylesheet" href="css/bubble.css">
+    <script type="application/javascript" src="js/main.js"></script>
+    <script type="application/javascript" src="js/ModalWindow.js"></script>
+    <script type="application/javascript" src="js/User.js"></script>
+    <script type="application/javascript" src="js/Game.js"></script>
+    <script type="application/javascript" src="js/LeaderBoards.js"></script>
+    <script type="application/javascript" src="js/cursor.js"></script>
+</head>
+<body>
+    <div id="modalwindow" class="initial border-8bit">
+        <div id="registration-window" class="window hidden">
+            <h4 class="reg_intro">Who do we have here?</h4>
+            <form action="" target="_blank" id="registration-form" class="registration-form">
+                <div class="input_field">
+                    <div class="cmd_for_login">
+                        <span></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="reg_login">Login:
+                        <input type="text" id="reg_login" name="reg_login" maxlength="20" data-tooltip="Check your login." autofocus required>
+                    </label>
+                </div>
+                <div class="input_field">
+                    <div class="cmd_for_login">
+                        <span class="pass_span"></span>
+                        <span class="hidden_span" id="1"></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="reg_password">Password:
+                        <input type="password" id="reg_password" name="reg_password" maxlength="20" data-tooltip="Check your password." required>
+                    </label>
+                </div>
+                <div class="input_field">
+                    <div class="cmd_for_login">
+                        <span></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="firstname">First Name:
+                        <input type="text" id="firstname" name="firstname" maxlength="20" data-tooltip="Check your first name." required>
+                    </label>
+                </div>
+                <div class="input_field">
+                    <div class="cmd_for_login">
+                        <span></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="lastname">Last Name:
+                        <input type="text" id="lastname" name="lastname" maxlength="20" data-tooltip="Check your last name." required>
+                    </label>
+                </div>
+                <div class="input_field">
+                    <div class="cmd_for_login">
+                        <span></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="email">Email:
+                        <input type="email" id="email" name="email" maxlength="20" data-tooltip="Check your Email." required>
+                    </label>
+                </div>
+            </form>
+            <div class="button-container modal-button">
+                <a href="#" id="reg-button" class="eightbit-btn">Log In</a>
+            </div>
+        </div>
+        <div id="authorization-window" class="window hidden">
+            <h4 class="reg_intro">Let me know something about u...</h4>
+            <form action="" target="_blank" id="authorization-form" class="registration-form">
+                <div class="input_field">
+                    <div class="cmd_for_login">
+                        <span></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="login">Login:
+                        <input type="text" id="login" name="login" maxlength="20" autofocus required>
+                    </label>
+                </div>
+                <div class="input_field">
+                    <div class="cmd_for_login" id="next">
+                        <span class="pass_span"></span>
+                        <span class="hidden_span"></span>
+                        <div class="cursor"></div>
+                    </div>
+                    <label for="password">Password:
+                        <input type="password" id="password" name="password"  required>
+                    </label>
+                </div>
+            </form>
+            <a href="#" id="registration-link">Registration</a>
+            <div class="button-container modal-button">
+                <a href="#" id="author-button" class="eightbit-btn">Log In</a>
+            </div>
+        </div>
+        <div id="rules-window" class="rules window hidden">
+            <h4 class="rools_intro">Now listen to me very carefully.</h4>
+            <ul id="rules-list" class="rules-list">
+                <li>
+                    Step 1:<br>
+                    <p>   Choose difficulty and card shirt.</p>
+                </li>
+                <li>
+                    Step 2:<br>
+                    <p>   Turn over any two cards.</p>
+                </li>
+                <li>
+                    Step 3:<br>
+                    <p>   If the two cards match, they'll stay upside down.</p>
+                </li>
+                <li>
+                    Step 4:<br>
+                    <p>   If they don't match, they'll turn back over.</p>
+                </li>
+                <li>
+                    Step 5:<br>
+                    <p>   Remember what was on each card and where it was.</p>
+                </li>
+                <li>
+                    Step 6:<br>
+                    <p>   The game is over when all the cards have been matched.</p>
+                </li>
+            </ul>
+            <div class="button-container modal-button">
+                <a href="#" id="ok-button" class="eightbit-btn">OK</a>
+            </div>
+        </div>
+        <div id="difficulty-window" class="window hidden">
+            <div id="difficulty-container" class="difficulty-container">
+                <h4>Difficulty:</h4>
+                <div id="radio-container" class="radio-container">
+                    <label class="radio-item">Easy
+                        <input type="radio" id="8" value="8" name="diff" checked>
+                        <span class="radio-but"></span>
+                    </label>
+                    <label class="radio-item">Medium
+                        <input type="radio" id="16" value="16" name="diff">
+                        <span class="radio-but"></span>
+                    </label>
+                    <label class="radio-item">Hard
+                        <input type="radio" id="24" value="24" name="diff">
+                        <span class="radio-but"></span>
+                    </label>
+                </div>
+                <div class="button-container">
+                    <a href="#" id="diff-ok" class="start eightbit-btn">OK</a>
+                </div>
+            </div>
+        </div>
+        <div id="shirts-window" class="window hidden">
+            <div id="shirts-container" class="shirts-container">
+                <h4>Difficulty:</h4>
+                <div>
+                    <label class="radio_item shirts-item border-8bit">
+                        <input type="radio" id="first" value="first" name="shirts" checked>
+                        <span class="radio-but"></span>
+                        <img src="assets/shirts/first.jpg" class="shirt-example">
+                    </label>
+                    <label class="radio_item shirts-item border-8bit">
+                        <input type="radio" id="second" value="second" name="shirts">
+                        <span class="radio-but"></span>
+                        <img src="assets/shirts/second.png" class="shirt-example">
+                    </label>
+                    <label class="radio_item shirts-item border-8bit">
+                        <input type="radio" id="third" value="third" name="shirts">
+                        <span class="radio-but"></span>
+                        <img src="assets/shirts/third.jpg" class="shirt-example">
+                    </label>
+                </div>
+                <div class="button-container">
+                    <a href="#" style="margin: 0 auto" id="shirts-ok" class="start eightbit-btn">OK</a>
+                </div>
+            </div>
+        </div>
+        <div id="congratulations-window" class="window hidden">
+            <h4 class="congratulations-intro">Congratulations!!!</h4>
+            <article class="game-info" >
+                <p>
+                Well played, ma boi!<br><br>  It takes u only
+                    <br><span id="result-time"></span><br>
+                to beat the
+                    <span id="difficulty-level"></span>
+                    difficulty game.<br></p>
+                <p id="leaderboard-result">U took the
+                    <span id="leaderboard-place"></span>
+                line of leaderboards.<br><br> Good luck next time!
+                </p>
+                <div class="button-container">
+                    <a href="#" id="congr-ok" class="start eightbit-btn">OK</a>
+                </div>
+            </article>
+        </div>
+    </div>
+    <header>
+        <div class="logo"></div>
+        <div class="page-name"><h1>Match-Match Game</h1></div>
+        <div class="button-container" id="header-button">
+            <a href="#" id="log-in-button" class="eightbit-btn">Log In</a>
+        </div>
+        <div class="head-profile" id="head-profile">
+            <img id="profile-logo" class="profile-logo" src="assets/profile-logo.png">
+            <span id="profile-name" class="profile-name"></span>
+        </div>
+    </header>
+    <main>
+        <div id="main-menu" class="main-menu">
+            <h4>Ready Player One</h4>
+            <div class="button-container">
+                <a href="#" id="start-game" class="start eightbit-btn">START</a>
+            </div>
+            <div class="button-container">
+                <a href="#" id="leaderboards-show" class="eightbit-btn">Leaderboards</a>
+            </div>
+            <div class="button-container">
+                <a href="#" id="difficulty-button" class="eightbit-btn">Difficulty</a>
+            </div>
+            <div class="button-container">
+                <a href="#" id="shirts-button" class="eightbit-btn">Cards Shirts</a>
+            </div>
+        </div>
+        <div id="game-field" class="game-field main-hidden">
+            <h1>Here we GO!</h1>
+            <span id="timer" class="timer"></span>
+            <ul class="deck" id="card-deck">
+                <li class="card border-8bit" type="1">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="1">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="2">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="2">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="3">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="3">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="4">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="4">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="5">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="5">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="6">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="6">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="7">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="7">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="8">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="8">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="9">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="9">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="10">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="10">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="11">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="11">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="12">
+                    <i></i>
+                </li>
+                <li class="card border-8bit" type="12">
+                    <i></i>
+                </li>
+            </ul>
+            <section class="back-buttons">
+                <div class="button-container">
+                    <a href="#" id="restart-game" class="start eightbit-btn">Restart</a>
+                </div>
+                <div class="button-container">
+                    <a href="#" id="back-to-main" class="start eightbit-btn">Back To Menu</a>
+                </div>
+            </section>
+        </div>
+        <div id="leader-boards" class="leader-boards main-hidden">
+            <h1>LeaderBoards</h1>
+            <h3 class="easy-header">Easy Difficulty Leaderboards</h3>
+            <table id="easyBoard" class="easyBoard">
+                <tr>
+                    <th>Place</th>
+                    <th>Login</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+            <h3 class="easy-header">Medium Difficulty Leaderboards</h3>
+            <table id="mediumBoard" class="easyBoard">
+                <tr>
+                    <th>Place</th>
+                    <th>Login</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+            <h3 class="easy-header">Hard Difficulty Leaderboards</h3>
+            <table id="hardBoard" class="easyBoard">
+                <tr>
+                    <th>Place</th>
+                    <th>Login</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+            <div class="button-container">
+                <a href="#" id="table-to-main" class="start eightbit-btn">Back To Menu</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
